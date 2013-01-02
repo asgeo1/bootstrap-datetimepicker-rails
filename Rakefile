@@ -4,9 +4,9 @@ desc "Update assets"
 task :update do
   system("rm -rf bootstrap-datetimepicker-src")
   system("git clone git://github.com/tarruda/bootstrap-datetimepicker.git bootstrap-datetimepicker-src")
-  system("cp bootstrap-datetimepicker-src/src/less/bootstrap-datetimepicker.less vendor/assets/stylesheets/bootstrap-datetimepicker.css.less")
-  system("cp bootstrap-datetimepicker-src/src/js/bootstrap-datetimepicker.js vendor/assets/javascripts/bootstrap-datetimepicker.js")
-  system("cp -R bootstrap-datetimepicker-src/src/js/locales/ vendor/assets/javascripts/locales/")
+  system("cd bootstrap-datetimepicker-src; make deps; make build")
+  system("cp bootstrap-datetimepicker-src/build/css/bootstrap-datetimepicker.min.css vendor/assets/stylesheets/bootstrap-datetimepicker.min.css")
+  system("cp bootstrap-datetimepicker-src/build/js/bootstrap-datetimepicker.min.js vendor/assets/javascripts/bootstrap-datetimepicker.min.js")
   fixes
   system("git status")
 end
